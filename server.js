@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 // Path to your service account key file for Firebase Admin SDK
-var serviceAccount = require("./videosdk-80952-firebase-adminsdk");
+var serviceAccount = require("etc/secrets/videosdk-80952-firebase-adminsdk");
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({

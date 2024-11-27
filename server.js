@@ -11,16 +11,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+// Path to your service account key file for Firebase Admin SDK
+var serviceAccount = require("./videosdk-80952-firebase-adminsdk");
+
 // Initialize Firebase Admin SDK
 admin.initializeApp({
-  credential: admin.credential.cert({
-      projectId: process.env.FIREBASE_PROJECT_ID, 
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY   
-  }),
-  databaseURL: process.env.DATABASE_URL
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://videosdk-80952.firebaseio.com"
 });
-
 
 // Home Route
 app.get("/", (req, res) => {
